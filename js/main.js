@@ -1,6 +1,6 @@
 //pega o ID formulario sendo "chamado" pelo botão com a classe Submit
 document.getElementById("formulario").addEventListener("submit", cadastrarVeiculo);
-document.getElementById("formulario").addEventListener("refresh", mostraPatio);
+document.getElementById("formulario").addEventListener("load", mostraPatio);
 
 //função de cadastro
 function cadastrarVeiculo(e){
@@ -30,13 +30,14 @@ function mostraPatio(){
 	var carros = JSON.parse(localStorage.getItem("patio"));
 	var carrosResultado = document.getElementById("resultado");
 	
-	for(var i = 0; i < carros.lenght; i++){
+	for(var i = 0; i < carros.length; i++){
 		var modelo = carros[i].modelo;
 		var placa = carros[i].placa;
 		var hora = carros[i].hora;	
 		
 		carrosResultado.innerHTML += "<tr><td>" + modelo +
 									"</td><td>" + placa +
-									"</td><td>" + hora + "</td></tr>";	
+									"</td><td>" + hora + "</td>" +
+		'<td><button class="btn btn-danger" onClick="apagarVeiculo()">Excluir</button></td></tr>';
 	}
 }
