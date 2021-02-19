@@ -15,19 +15,20 @@ function cadastrarVeiculo(e){
 		minutos: time.getMinutes(),
 		segundos: time.getSeconds()		
 	}
-	//if(localStorage.getItem("patio") === null) {
+	if(localStorage.getItem("patio") === null) {
 		var carros = [];
 		carros.push(carro);
 		localStorage.setItem("patio", JSON.stringfy(carros))
-	/*} else {
+	} else {
 		var carros = JSON.parse(localStorage.getItem("patio"));
 		carros.push(carro);
 		localStorage.setItem("patio"), JSON.stringify(carros);
-	}*/
+	}
+	mostraPatio();
 	e.preventDefault();
 }
 
-function mostrapatio(){
+function mostraPatio(){
 	var carros = JSON.parse(localStorage.getItem("patio"));
 	var carrosResultado = document.getElementId("resultados");
 	
