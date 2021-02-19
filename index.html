@@ -14,11 +14,11 @@
 			<form id="formulario">
 			<div class="form-group">
 				<label>Modelo do Veículo:</label>
-				<input type="text" id="modeloVeiculo" class="form-control"> <!-- campo de texto para input -->
+				<input type="text" id="modeloVeiculo" class="form-control" onkeyup="this.value = this.value.toUpperCase();"> <!-- campo de texto para input -->
 			</div>
 			<div class="form-group">
 				<label>Placa do Veículo:</label>
-				<input type="text" id="placaVeiculo" class="form-control"> <!-- campo de texto para input -->
+				<input type="text" id="placaVeiculo" class="form-control" onkeyup="this.value = this.value.toUpperCase();"> <!-- campo de texto para input -->
 			</div>
 			<button type="submit" class="btn btn-primary">Enviar</button> <!-- botão usando classe do bootstrap -->
 			</form>
