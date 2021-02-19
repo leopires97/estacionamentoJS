@@ -11,7 +11,9 @@ function cadastrarVeiculo(e){
 	carro = {
 		modelo: modeloVeiculo,
 		placa: placaVeiculo,
-		hora: time.getHours()
+		hora: time.getHours(),
+		minutos: time.getMinutes(),
+		segundos: time.getSeconds()
 	}
 	if(localStorage.getItem("patio") === null) {
 		var carros = [];
@@ -33,7 +35,7 @@ function mostraPatio(){
 	for(var i = 0; i < carros.length; i++){
 		var modelo = carros[i].modelo;
 		var placa = carros[i].placa;
-		var hora = carros[i].hora;	
+		var hora = carros[i].hora + ":" + carros[i].minutos + ":" + carros[i].segundos;	
 		
 		carrosResultado.innerHTML += "<tr><td>" + modelo +
 									"</td><td>" + placa +
