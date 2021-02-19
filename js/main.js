@@ -28,6 +28,18 @@ function cadastrarVeiculo(e){
 	e.preventDefault();
 }
 
+function apagarVeiculo(placa) {
+	var carros = JSON.parse(localStorage.getItem("patio"));
+	
+	for(var i = 0; i < carros.length; i++) {
+		if(carros[i].placa == placa){
+			carros.splice(i, 1);
+		}
+		localStorage.setItem("patio", JSON.stringify(carros));
+	}
+	mostraPatio();
+}
+
 function mostraPatio(){
 	var carros = JSON.parse(localStorage.getItem("patio"));
 	var carrosResultado = document.getElementById("resultado");
@@ -40,6 +52,6 @@ function mostraPatio(){
 		carrosResultado.innerHTML += "<tr><td>" + modelo +
 									"</td><td>" + placa +
 									"</td><td>" + hora + "</td>" +
-		'<td><button class="btn btn-danger" onClick="apagarVeiculo()">Excluir</button></td></tr>';
+		'<td><button class="btn btn-danger" onClick="apagarVeiculo(\'' + placa + '\')">Excluir</button></td></tr>';
 	}
 }
