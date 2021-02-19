@@ -14,7 +14,7 @@
 			<form id="formulario">
 			<div class="form-group">
 				<label>Modelo do Veículo:</label>
-				<input type="text" id="modeloVeiculo" class="form-control" onkeyup="this.value = this.value.toUpperCase();"> <!-- campo de texto para input -->
+				<input type="text" id="modeloVeiculo" class="form-control" onkeyup="this.value = this.value.toUpperCase();" maxlength="60"> <!-- campo de texto para input -->
 			</div>
 			<div class="form-group">
 				<label>Placa do Veículo:</label>
@@ -42,8 +42,14 @@
 		</div>
 	</div>
 <script src="js/jquery-3.5.1.min.js"></script> <!-- incorpora o JQuery (obrigatório pro boostrap) -->
+<script src="js/jquery.mask.min.js"></script>	<!-- incorpora o JQuery para máscaras de campo -->
 <script scr="js/bootstrap.min.js"></script> <!-- incorpora o JS necessário para interpretar o bootstrap -->
 <script src="js/main.js"></script> <!-- incorpora o nosso JS -->
 <script>window.onload=mostraPatio()</script>
+<script type="text/javascript">
+	jQuery(function($){
+		$("#placaVeiculo").mask("AAA-9999");
+	});
+</script>
 </body>
 </html>

@@ -1,20 +1,24 @@
 //pega o ID formulario sendo "chamado" pelo botão com a classe Submit
-document.getElementById("formulario").addEventListener("submit", cadastrarVeiculo);
+document.getElementById("formulario").addEventListener("submit", cadastrarVeiculo);		/*pega a form e tem o evento que é o click do submit*/
 
 //função de cadastro
 function cadastrarVeiculo(e){
-	var modeloVeiculo = document.getElementById("modeloVeiculo").value;
-	var placaVeiculo = document.getElementById("placaVeiculo").value;
+	var modeloVeiculo = document.getElementById("modeloVeiculo").value;		/*pega o valor do campo input modeloVeiculo do HTML*/
+	var placaVeiculo = document.getElementById("placaVeiculo").value;		/*pega o valor do campo input placaVeiculo do HTML*/
 	var time = new Date();
 	
-	carro = {
+	if(modeloVeiculo == "" && placaVeiculo == "" || modeloVeiculo == "" || placaVeiculo == "")
+	{
+		window.alert("Campos obrigatórios não preenchidos.");
+	} else {
+	carro = {	/*cria o objeto com os seguintes parametros.*/
 		modelo: modeloVeiculo,
 		placa: placaVeiculo,
-		hora: time.getHours(),
-		minutos: time.getMinutes(),
-		segundos: time.getSeconds()
+		hora: (time.getHours() < 10 ? '0' : '') + time.getHours(),
+		minutos: (time.getMinutes() < 10 ? '0' : '') + time.getMinutes(),
+		segundos: (time.getSeconds() < 10 ? '0' : '') + time.getSeconds()
 	}
-	if(localStorage.getItem("patio") === null) {
+	if(localStorage.getItem("patio") === null) {	 
 		var carros = [];
 		carros.push(carro);
 		localStorage.setItem("patio", JSON.stringify(carros))
@@ -26,7 +30,8 @@ function cadastrarVeiculo(e){
 	document.getElementById("modeloVeiculo").value = "";
 	document.getElementById("placaVeiculo").value = "";
 	mostraPatio();
-	e.preventDefault();
+	}
+	e.preventDefault();	
 }
 
 function apagarVeiculo(placa) {
